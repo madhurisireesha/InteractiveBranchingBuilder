@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Survey from './Survey';
+import './App.css'; // Import the CSS file
 
-function App() {
+const App = () => {
+  const [showSurvey, setShowSurvey] = useState(false);
+
+  const pageChange = () => {
+    setShowSurvey(true); // Set the state to show the Survey component
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      {showSurvey ? (
+        <Survey />
+      ) : (
+        <div className="content">
+          <h1>Do You Want To Know Your Preferences!</h1>
+          <button onClick={pageChange}>Click here to start</button>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default App;
