@@ -236,7 +236,7 @@ export default function Survey() {
         </>
       ) : (
         <div className="summary-container">
-          <h2>Quiz Summary</h2>
+          <h2>Your Preferences!</h2>
           <ul className="summary-list">
             {selectedAnswers.map((answer, index) => (
               <li key={index} className="summary-item">
