@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Survey from './Survey';
-import './App.css'; // Import the CSS file
+import './App.css';
 
 const App = () => {
   const [showSurvey, setShowSurvey] = useState(false);
 
   const pageChange = () => {
-    setShowSurvey(true); // Set the state to show the Survey component
+    setShowSurvey(true); 
   };
 
   return (

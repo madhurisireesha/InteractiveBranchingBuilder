@@ -142,51 +142,53 @@ const question5Edges = [
 
 
 export default function Survey() {
-  const [questionStep, setQuestionStep] = useState(1);
-  const [selectedAnswers, setSelectedAnswers] = useState([]);
-  const [showSummaryPage, setShowSummaryPage] = useState(false);
+  const[questionStep,setQuestionStep]=useState(1);
+  const[selectedAnswers,setSelectedAnswers]=useState([]);
+  const[showSummaryPage,setShowSummaryPage]=useState(false);
 
-  const [nodes, setNodes, onNodesChange] = useNodesState(question1Nodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(question1Edges);
+  const [nodes,setNodes,onNodesChange]=useNodesState(question1Nodes);
+  const [edges,setEdges,onEdgesChange]=useEdgesState(question1Edges);
 
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
+  const onConnect=useCallback(
+    (params)=>setEdges((eds)=>addEdge(params, eds)),
     [setEdges]
   );
 
-  const handleNextQuestion = () => {
-    if (questionStep === 1) {
+  const handleNextQuestion=()=>{
+    if (questionStep===1) {
       setQuestionStep(2);
       setNodes(question2Nodes);
       setEdges(question2Edges);
-    } else if (questionStep === 2) {
+    } else if(questionStep===2) {
       setQuestionStep(3);
       setNodes(question3Nodes);
       setEdges(question3Edges);
-    } else if (questionStep === 3) {
+    } else if(questionStep ===3) {
       setQuestionStep(4);
       setNodes(question4Nodes);
       setEdges(question4Edges);
-    } else if (questionStep === 4) {
+    } else if(questionStep=== 4) {
       setQuestionStep(5);
       setNodes(question5Nodes);
       setEdges(question5Edges);
-    } else {
+    } else{
       setShowSummaryPage(true); 
     }
+
+
   };
 
-  const handleSubOptionSelect = (nodeId) => {
+  const handleSubOptionSelect=(nodeId) => {
      const currentQuestionLabel = 
-      questionStep === 1 ? "Do you prefer Coffee or Tea?" :
-      questionStep === 2 ? "Do you prefer Cats or Dogs?" :
-      questionStep === 3 ? "Do you like Hot or Cold places?" :
-      questionStep === 4 ? "Do you Fruits or Vegetables?" : 
-      questionStep === 5 ? "Do you like Frontend or Backend Technologies?" : ""; 
+      questionStep===1?"Do you prefer Coffee or Tea?" :
+      questionStep===2?"Do you prefer Cats or Dogs?" :
+      questionStep===3?"Do you like Hot or Cold places?" :
+      questionStep===4?"Do you Fruits or Vegetables?" : 
+      questionStep===5?"Do you like Frontend or Backend Technologies?" : ""; 
    
-    const selectedOption = nodes.find((node) => node.id === nodeId);
-    if (selectedOption) {
-       setSelectedAnswers((prevAnswers) => [
+    const selectedOption=nodes.find((node) => node.id === nodeId);
+    if (selectedOption){
+       setSelectedAnswers((prevAnswers)=>[
         ...prevAnswers,
         { question: currentQuestionLabel, answer: selectedOption.data.label }
       ]);
@@ -195,7 +197,7 @@ export default function Survey() {
   };
   
 
-  const handleRestartQuiz = () => {
+  const handleRestartQuiz=() => {
     setQuestionStep(1);
     setSelectedAnswers([]);
     setShowSummaryPage(false);
@@ -206,7 +208,7 @@ export default function Survey() {
   return (
     <div className="app-container">
      
-      {!showSummaryPage ? (
+      {!showSummaryPage?(
         <>
     
           <ReactFlow
@@ -215,22 +217,22 @@ export default function Survey() {
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
-            onNodeClick={(event, node) => {
+            onNodeClick={(event,node)=>{
               if (node.id > '3' && questionStep === 1) {
                 handleSubOptionSelect(node.id);
-              } else if (node.id > '12' && questionStep === 2) {
+              } else if (node.id>'12'&& questionStep ===2) {
                 handleSubOptionSelect(node.id);
-              } else if (node.id > '16' && questionStep === 3) {
+              } else if (node.id>'16' && questionStep===3) {
                 handleSubOptionSelect(node.id);
-              } else if (node.id > '20' && questionStep === 4) {
+              } else if (node.id>'20' && questionStep===4) {
                 handleSubOptionSelect(node.id);
-              } else if (node.id > '24' && questionStep === 5) {
+              } else if (node.id>'24' && questionStep===5) {
                 handleSubOptionSelect(node.id);
               }
             }}
-            className="react-flow-container"
-          />
-          {questionStep <= 5 && (
+            className="react-flow-container"/>
+          
+          {questionStep<=5&& (
             <button onClick={handleNextQuestion} className="next-question-button">Next Question</button>
           )}
         </>
