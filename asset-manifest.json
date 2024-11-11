@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/InteractiveBranchingBuilder/static/css/main.d5cac4d5.css",
+    "main.js": "/InteractiveBranchingBuilder/static/js/main.8ec8ec87.js",
+    "index.html": "/InteractiveBranchingBuilder/index.html",
+    "main.d5cac4d5.css.map": "/InteractiveBranchingBuilder/static/css/main.d5cac4d5.css.map",
+    "main.8ec8ec87.js.map": "/InteractiveBranchingBuilder/static/js/main.8ec8ec87.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d5cac4d5.css",
+    "static/js/main.8ec8ec87.js"
+  ]
+}
